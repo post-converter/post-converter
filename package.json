@@ -1,0 +1,21 @@
+{
+  "name": "post-converter",
+  "version": "1.0.12",
+  "type": "module",
+  "main": "convert.js",
+  "files": [
+    "convert.js",
+    "copyTemplates.js",
+    "createPages.js",
+    "createPostPages.js",
+    "customTemplate.html",
+    "profile/**",
+    "result/**"
+  ],
+  "scripts": {
+    "postinstall": "node copyTemplates.js"
+  },
+  "dependencies": {
+    "marked": "^16.2.1"
+  }
+}
