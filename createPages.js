@@ -52,7 +52,14 @@ export function createPages(inputDir, outputDir, baseUrl) {
         template = template.replace(regex, fragment.content);
     }
 
-    fs.writeFileSync(path.join(resultDir, "index.html"), template, "utf-8");
+    // 사용자 프로젝트 루트 경로 (실행 위치)
+    const userRoot = process.env.INIT_CWD && !process.env.INIT_CWD.includes('node_modules')
+        ? process.env.INIT_CWD
+        : process.cwd();
 
-    console.log(`✅ Built: ${path.join(resultDir, "index.html")}`);
+    // 루트에 postConverterIndex.html 저장
+    const outputPath = path.join(userRoot, "postConverterIndex.html");
+    fs.writeFileSync(outputPath, template, "utf-8");
+
+    console.log(`✅ Built: ${outputPath}`);
 }
